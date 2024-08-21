@@ -19,6 +19,21 @@ import pyglet.font
 from tkinter import Tk,Label
 from tkinter.font import Font
 
+import ctypes
+
+
+def is_admin():
+    try:
+        return ctypes.windll.shell32.IsUserAnAdmin()
+    except:
+        return False
+
+
+if is_admin():
+    print("程序以管理员权限运行")
+else:
+    print("程序未以管理员权限运行")
+
 root = Tk()
 width = 900
 height = 600
