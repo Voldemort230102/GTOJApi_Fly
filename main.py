@@ -15,7 +15,7 @@
 # r1 = requests.post(url1,headers=h1,json=d)
 # print(r1)
 # print(r1.text)
-from pyglet.font import add_file,load
+import pyglet.font
 from tkinter import Tk,Label
 from tkinter.font import Font
 
@@ -29,9 +29,8 @@ root.title('GTOJ API')
 root.resizable(False, False)
 root.iconbitmap('./icon/icon2128.ico')
 
-add_file(r"D:\Project\Python\GTOJ_Api\font\STLITI.TTF")
-load(r"D:\Project\Python\GTOJ_Api\font\STLITI.TTF")
-gtoj = Label(root, text='GTOJ API', font=("华文隶书", 12))
+custom_font = Font(family='华文隶书', size=12)
+gtoj = Label(root, text='GTOJ API', font=(custom_font, 12))
 gtoj.pack()
 
 root.mainloop()
