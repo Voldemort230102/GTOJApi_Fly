@@ -18,5 +18,13 @@
 from tkinter import Tk
 
 root = Tk()
+width = 900
+height = 600
+window_width = root.winfo_screenwidth()
+window_height = root.winfo_screenheight()
+root.geometry('{}x{}+{}+{}'.format(width, height, int(window_width/2-width/2), int(window_height/2-height/2)))
+root.title('GTOJ API')
+root.resizable(False, False)
+root.iconbitmap('./icon/icon2128.ico')
 
 root.mainloop()
