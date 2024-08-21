@@ -1,11 +1,21 @@
-# -*-coding:utf-8-*-
+# # -*-coding:utf-8-*-
 import requests
-import json
-url = "https://coding-oj.gaotu100.com/api/get-user-home-info?uid=c1d7f94044a2485ea89761d5332e1121"
-h = {
-        "user-agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36 Edg/127.0.0.0"
+url = "https://coding-oj.gaotu100.com/api/login"
+data = {
+        "username":"李俣嘉",
+        "password":"13936277872"
 }
-r = requests.get(url,headers=h)
-print(r)
+r = requests.post(url,json=data)
 print(r.text)
-print(r.cookies)
+c = r.cookies["JSESSIONID"]
+print(c)
+
+
+url1 = "https://coding-oj.gaotu100.com/api/get-user-home-info"
+h1 = {
+        "user-agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36 Edg/127.0.0.0",
+        "cookie":c
+}
+r1 = requests.get(url,headers=h1)
+print(r1)
+print(r1.text)
