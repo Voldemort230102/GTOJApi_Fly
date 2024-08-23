@@ -44,8 +44,7 @@ root.title('GTOJ API')
 root.resizable(False, False)
 root.iconbitmap('./icon/icon2128.ico')
 
-custom_font = Font(family='华文隶书', size=12)
-gtoj = Label(root, text='GTOJ API', font=(custom_font, 12))
+gtoj = Label(root, text='GTOJ API', font=("华文隶书", 12, "bold"))
 gtoj.pack()
 
 root.mainloop()
