@@ -21,30 +21,33 @@ from tkinter.font import Font
 
 import ctypes
 
-
 def is_admin():
     try:
         return ctypes.windll.shell32.IsUserAnAdmin()
     except:
         return False
 
-
-if is_admin():
-    print("程序以管理员权限运行")
-else:
+def no_admin():
     print("程序未以管理员权限运行")
 
-root = Tk()
-width = 900
-height = 600
-window_width = root.winfo_screenwidth()
-window_height = root.winfo_screenheight()
-root.geometry('{}x{}+{}+{}'.format(width, height, int(window_width/2-width/2), int(window_height/2-height/2)))
-root.title('GTOJ API')
-root.resizable(False, False)
-root.iconbitmap('./icon/icon2128.ico')
+def main():
+    root = Tk()
+    width = 900
+    height = 600
+    window_width = root.winfo_screenwidth()
+    window_height = root.winfo_screenheight()
+    root.geometry('{}x{}+{}+{}'.format(width, height, int(window_width/2-width/2), int(window_height/2-height/2)))
+    root.title('GTOJApi Fly')
+    root.resizable(False, False)
+    root.iconbitmap('./icon/icon2128.ico')
 
-gtoj = Label(root, text='GTOJ API', font=("华文隶书", 12, "bold"))
-gtoj.pack()
+    gtoj = Label(root, text='GTOJApi Fly', font=("华文隶书", 50, "bold"))
+    gtoj.pack()
 
-root.mainloop()
+    root.mainloop()
+
+if __name__ == '__main__':
+    if is_admin():
+        main()
+    else:
+        no_admin()
