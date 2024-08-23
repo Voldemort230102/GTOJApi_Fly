@@ -41,13 +41,24 @@ def main():
     root.resizable(False, False)
     root.iconbitmap('./icon/icon2128.ico')
 
-    gtoj = Label(root, text='GTOJApi Fly', font=("华文隶书", 50, "bold"))
-    gtoj.pack()
+    gtoj1 = Label(root, text='GTOJApi Fly', font=("华文隶书", 70, "bold"))
+    gtoj1.place(x=0,y=0)
+    gtoj1.update()
+    gtoj1_width = gtoj1.winfo_width()
+    gtoj1_height = gtoj1.winfo_height()
+    gtoj1.place(x=width/2-gtoj1_width/2,y=100-gtoj1_height/2)
+
+    # gtoj2 = Label(root, text="Fly", font=("华文隶书", 50, "bold"))
+    # gtoj2.place(x=0, y=0)
+    # gtoj2.update()
+    # gtoj2_width = gtoj2.winfo_width()
+    # gtoj2_height = gtoj2.winfo_height()
+    # gtoj2.place(x=width / 2 - gtoj2_width / 2, y=200 - gtoj2_height / 2)
 
     root.mainloop()
 
 if __name__ == '__main__':
-    if is_admin():
-        main()
-    else:
-        no_admin()
+    # if is_admin():
+    main()
+    # else:
+    #     no_admin()
