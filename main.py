@@ -30,6 +30,9 @@ def is_admin():
 def no_admin():
     print("程序未以管理员权限运行")
 
+def void():
+    pass
+
 def main():
     root = Tk()
     width = 900
@@ -41,19 +44,20 @@ def main():
     root.resizable(False, False)
     root.iconbitmap('./icon/icon2128.ico')
 
+    # 添加一个"关于"菜单
+    about_menu = Menu(menu, tearoff=False)
+    menu.add_cascade(label="关于", menu=about_menu)
+    about_menu.add_command(label="检查更新", command=void)
+    about_menu.add_separator()
+    about_menu.add_command(label="关于我们", command=void)
+
+    # GTOJApi Fly表签
     gtoj1 = Label(root, text='GTOJApi Fly', font=("华文隶书", 70, "bold"))
     gtoj1.place(x=0,y=0)
     gtoj1.update()
     gtoj1_width = gtoj1.winfo_width()
     gtoj1_height = gtoj1.winfo_height()
     gtoj1.place(x=width/2-gtoj1_width/2,y=100-gtoj1_height/2)
-
-    # gtoj2 = Label(root, text="Fly", font=("华文隶书", 50, "bold"))
-    # gtoj2.place(x=0, y=0)
-    # gtoj2.update()
-    # gtoj2_width = gtoj2.winfo_width()
-    # gtoj2_height = gtoj2.winfo_height()
-    # gtoj2.place(x=width / 2 - gtoj2_width / 2, y=200 - gtoj2_height / 2)
 
     root.mainloop()
 
