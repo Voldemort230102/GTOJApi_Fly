@@ -16,8 +16,8 @@
 # print(r1)
 # print(r1.text)
 import pyglet.font
-from tkinter import Tk,Label
-from tkinter.font import Font
+from tkinter import Tk,Label,Menu,Button
+from tkinter.messagebox import showinfo,showwarning
 
 import ctypes
 
@@ -33,20 +33,57 @@ def no_admin():
 def void():
     pass
 
-def main():
-    root = Tk()
+def position(pos,win_length):
+    return int(pos-win_length/2)
+
+def get_jsessionid():
+    global root
+    import webbrowser
+    import pyautogui
+    import time
+    url = "https://coding-oj.gaotu100.com/home"
+    # 提示信息
+    showinfo("提示","此操作将会打开浏览器")
+    showwarning("警告","在操作过程中请勿移动鼠标或使用键盘")
+    showinfo("提示","在调出“开发者模式”后\n选择菜单栏中的“网络”\n然后按下F5刷新")
+    showinfo("提示","在其中的左上角“筛选器”中输入“home”\n然后选择“home”\n在“请求标头”中找到“Cookie”\n并复制其对应的值粘贴到下一个窗口中")
+    # 打开浏览器
+    webbrowser.open(url)  # 在默认浏览器中打开指定的URL
+    time.sleep(2)
+    pyautogui.hotkey('f12')
+    # 创建询问窗口
+    root.attributes('-disable', True)
     width = 900
     height = 600
+    ask = Tk()
+    win_width = ask.winfo_screenwidth()
+    win_height = ask.winfo_screenheight()
+    ask.geometry('{}x{}+{}+{}'.format(width, height, position(win_width/2,width), position(win_height/2,height)))
+    ask.title('GTOJApi Fly')
+    ask.resizable(False, False)
+    ask.iconbitmap('./icon/icon2128.ico')
+    ask.mainloop()
+
+def main():
+    global root
+    width = 900
+    height = 600
+    root = Tk()
     window_width = root.winfo_screenwidth()
     window_height = root.winfo_screenheight()
-    root.geometry('{}x{}+{}+{}'.format(width, height, int(window_width/2-width/2), int(window_height/2-height/2)))
+    root.geometry('{}x{}+{}+{}'.format(width, height, position(window_width/2,width), position(window_height/2,height)))
     root.title('GTOJApi Fly')
     root.resizable(False, False)
     root.iconbitmap('./icon/icon2128.ico')
 
+    # 创建菜单栏
+    menu = Menu(root)
+    root.config(menu=menu)
+
     # 添加一个"关于"菜单
     about_menu = Menu(menu, tearoff=False)
     menu.add_cascade(label="关于", menu=about_menu)
+    about_menu.add_command(label="使用方法", command=void)
     about_menu.add_command(label="检查更新", command=void)
     about_menu.add_separator()
     about_menu.add_command(label="关于我们", command=void)
@@ -57,7 +94,15 @@ def main():
     gtoj1.update()
     gtoj1_width = gtoj1.winfo_width()
     gtoj1_height = gtoj1.winfo_height()
-    gtoj1.place(x=width/2-gtoj1_width/2,y=100-gtoj1_height/2)
+    gtoj1.place(x=position(width/2,gtoj1_width), y=position(100,gtoj1_height))
+
+    # 创建按钮
+    jsessionid = Button(root, text="登入", bd=10, width= 10, height=1, font=('华文行楷',25), command=lambda:get_jsessionid())
+    jsessionid.place(x=0, y=0)
+    jsessionid.update()
+    jsessionid_width = jsessionid.winfo_width()
+    jsessionid_height = jsessionid.winfo_height()
+    jsessionid.place(x=position(300,jsessionid_width),y=position(350,jsessionid_height))
 
     root.mainloop()
 
