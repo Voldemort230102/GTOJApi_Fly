@@ -62,6 +62,10 @@ def get_jsessionid():
     ask.title('GTOJApi Fly')
     ask.resizable(False, False)
     ask.iconbitmap('./icon/icon2128.ico')
+    def ask_close():
+        root.attributes('-disable', False)
+        ask.destroy()
+    ask.protocol('WM_DELETE_WINDOW', ask_close)
     ask.mainloop()
 
 def main():
