@@ -17,6 +17,7 @@
 # print(r1.text)
 import pyglet.font
 from tkinter import Tk,Label,Menu,Button
+from matplotlib.font_manager import findSystemFonts,FontProperties
 from tkinter.messagebox import showinfo,showwarning
 
 import ctypes
@@ -67,6 +68,16 @@ def get_jsessionid():
         ask.destroy()
     ask.protocol('WM_DELETE_WINDOW', ask_close)
     ask.mainloop()
+
+# 是否含义某字体
+def if_have_font(name):
+    fonts = findSystemFonts(fontpaths=None, fontext='ttf')
+    font_names = [FontProperties(fname=font).get_name() for font in fonts]
+    font_names = sorted(set(font_names))
+    for font_name in font_names:
+        if font_name.lower() == name.lower():
+            return True
+    return False
 
 def main():
     global root
