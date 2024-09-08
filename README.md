@@ -11,5 +11,6 @@
     <h5>Group:Reason Creation</h5>
     <h5>Describe:A management system.</h5>
 </center>
-<strong>备注：该项目处于开发阶段全部分支不可用</strong>
-<strong>Remarks: The project is in the development stage, and all branches are unavailable.</strong>
+<strong>提示：该项目处于开发阶段全部分支不可用</strong>
+<br>
+<strong>PS: The project is in the development stage, and all branches are unavailable.</strong>
