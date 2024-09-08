@@ -11,3 +11,6 @@
     <h5>Group:Reason Creation</h5>
     <h5>Describe:A program that can use GTOJ's API.</h5>
 </center>
+<strong>提示：该项目处于开发阶段全部分支不可用</strong>
+<br>
+<strong>PS: The project is in the development stage, and all branches are unavailable.</strong>
